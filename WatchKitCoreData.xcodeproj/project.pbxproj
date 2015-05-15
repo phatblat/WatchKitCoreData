@@ -30,6 +30,7 @@
 		F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */; };
 		F87CD3AC1B065089001455AC /* AppGroupDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3AB1B065089001455AC /* AppGroupDataController.swift */; };
 		F87CD3B01B0651B0001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
+		F87CD3B11B06521D001455AC /* WatchKitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3371B05773C001455AC /* WatchKitCoreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -585,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87CD3611B0579B6001455AC /* InterfaceController.swift in Sources */,
+				F87CD3B11B06521D001455AC /* WatchKitCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
