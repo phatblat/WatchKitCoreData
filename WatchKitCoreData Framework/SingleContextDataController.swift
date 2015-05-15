@@ -53,67 +53,71 @@ class SingleContextDataController: DataController {
         }
     }
 
+    // MARK: - Internal
+
+    func dataStoreDirectory() -> NSURL {
+        // App documents directory
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
+    }
 
     // MARK: - Private
 
     /// http://martiancraft.com/blog/2015/03/core-data-stack/
     private func initializeCoreData() {
         if let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd"),
-            let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
-                println("modelURL: \(modelURL)")
+        let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
+            println("modelURL: \(modelURL)")
 
-                let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
-                mainContext.persistentStoreCoordinator = coordinator
+            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
+            mainContext.persistentStoreCoordinator = coordinator
 
-                // Stand up the store in the background to avoid blocking the main queue
-                let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
-                dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                    [unowned self, unowned coordinator] in
+            // Stand up the store in the background to avoid blocking the main queue
+            let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                [unowned self, unowned coordinator] in
 
-                    let options: [NSObject : AnyObject] = [
-                        NSMigratePersistentStoresAutomaticallyOption: true,
-                        NSInferMappingModelAutomaticallyOption: true,
-                        NSSQLitePragmasOption: ["journal_mode": "DELETE"]
-                    ]
+                let options: [NSObject : AnyObject] = [
+                    NSMigratePersistentStoresAutomaticallyOption: true,
+                    NSInferMappingModelAutomaticallyOption: true,
+                    NSSQLitePragmasOption: ["journal_mode": "DELETE"]
+                ]
 
-                    if let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as? NSURL {
-                        let storeURL = documentsURL.URLByAppendingPathComponent("DataModel.sqlite")
-                        println("storeURL: \(storeURL)")
+                let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent("DataModel.sqlite")
+                println("storeURL: \(storeURL)")
 
-                        var error: NSError? = nil
-                        if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error) {
-                            if let callback = self.initCallback {
-                                // Call the callback on the main queue
-                                dispatch_sync(dispatch_get_main_queue()) {
-                                    callback()
-                                }
-                            }
-                        }
-                        else {
-                            println("Error standing up store: \(error)")
-#if DEBUG
-                            // Blow away store
-                            if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
-                                println("Error removing store: \(error)")
-                            }
-
-                            // Try again
-                            if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
-                            let callback = self.initCallback {
-                                // Call the callback on the main queue
-                                dispatch_sync(dispatch_get_main_queue()) {
-                                    callback()
-                                }
-                            }
-#endif
+                var error: NSError? = nil
+                if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error) {
+                    if let callback = self.initCallback {
+                        // Call the callback on the main queue
+                        dispatch_sync(dispatch_get_main_queue()) {
+                            callback()
                         }
                     }
                 }
+                else {
+                    println("Error standing up store: \(error)")
+#if DEBUG
+                    // Blow away store
+                    if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
+                        println("Error removing store: \(error)")
+                    }
+
+                    // Try again
+                    if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
+                    let callback = self.initCallback {
+                        // Call the callback on the main queue
+                        dispatch_sync(dispatch_get_main_queue()) {
+                            callback()
+                        }
+                    }
+#endif
+                }
+            }
         }
         else {
             println("Unable to locate DataModel.momd in bundle")
         }
-        
     }
 
 }
+
