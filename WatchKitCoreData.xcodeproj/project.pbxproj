@@ -28,7 +28,8 @@
 		F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A11B057EF5001455AC /* DualContextDataController.swift */; };
 		F87CD3A41B057F79001455AC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A31B057F79001455AC /* DataController.swift */; };
 		F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */; };
-		F87CD3A81B058B54001455AC /* AppDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A71B058B54001455AC /* AppDataController.swift */; };
+		F87CD3AC1B065089001455AC /* AppGroupDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3AB1B065089001455AC /* AppGroupDataController.swift */; };
+		F87CD3B01B0651B0001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,13 @@
 			remoteInfo = "WatchKitCoreData Framework";
 		};
 		F87CD3961B057A1B001455AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F87CD3281B05773C001455AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F87CD3801B057A1A001455AC;
+			remoteInfo = "WatchKitCoreData Framework";
+		};
+		F87CD3AE1B0651AC001455AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F87CD3281B05773C001455AC /* Project object */;
 			proxyType = 1;
@@ -123,9 +131,9 @@
 		F87CD3A11B057EF5001455AC /* DualContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualContextDataController.swift; sourceTree = "<group>"; };
 		F87CD3A31B057F79001455AC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContextDataController.swift; sourceTree = "<group>"; };
-		F87CD3A71B058B54001455AC /* AppDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataController.swift; sourceTree = "<group>"; };
 		F87CD3A91B059300001455AC /* WatchKitCoreData.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WatchKitCoreData.entitlements; sourceTree = "<group>"; };
 		F87CD3AA1B059399001455AC /* WatchKitCoreData WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WatchKitCoreData WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		F87CD3AB1B065089001455AC /* AppGroupDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppGroupDataController.swift; path = "WatchKitCoreData Framework/AppGroupDataController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87CD3B01B0651B0001455AC /* WatchKitCoreDataFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +207,6 @@
 		F87CD3321B05773C001455AC /* WatchKitCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F87CD3A71B058B54001455AC /* AppDataController.swift */,
 				F87CD3351B05773C001455AC /* AppDelegate.swift */,
 				F87CD33F1B05773C001455AC /* Images.xcassets */,
 				F87CD3411B05773C001455AC /* LaunchScreen.xib */,
@@ -276,6 +284,7 @@
 		F87CD3821B057A1A001455AC /* WatchKitCoreData Framework */ = {
 			isa = PBXGroup;
 			children = (
+				F87CD3AB1B065089001455AC /* AppGroupDataController.swift */,
 				F87CD3A31B057F79001455AC /* DataController.swift */,
 				F87CD3A11B057EF5001455AC /* DualContextDataController.swift */,
 				F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */,
@@ -374,6 +383,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F87CD3AF1B0651AC001455AC /* PBXTargetDependency */,
 				F87CD3691B0579B7001455AC /* PBXTargetDependency */,
 			);
 			name = "WatchKitCoreData WatchKit Extension";
@@ -557,7 +567,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87CD33B1B05773C001455AC /* ViewController.swift in Sources */,
-				F87CD3A81B058B54001455AC /* AppDataController.swift in Sources */,
 				F87CD3361B05773C001455AC /* AppDelegate.swift in Sources */,
 				F87CD3391B05773C001455AC /* WatchKitCoreData.xcdatamodeld in Sources */,
 			);
@@ -586,6 +595,7 @@
 				F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */,
 				F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */,
 				F87CD3A41B057F79001455AC /* DataController.swift in Sources */,
+				F87CD3AC1B065089001455AC /* AppGroupDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +634,11 @@
 			isa = PBXTargetDependency;
 			target = F87CD3801B057A1A001455AC /* WatchKitCoreData Framework */;
 			targetProxy = F87CD3961B057A1B001455AC /* PBXContainerItemProxy */;
+		};
+		F87CD3AF1B0651AC001455AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F87CD3801B057A1A001455AC /* WatchKitCoreData Framework */;
+			targetProxy = F87CD3AE1B0651AC001455AC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

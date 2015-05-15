@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         println(NSHomeDirectory())
 
-        dataController = AppDataController() {
+        dataController = AppGroupDataController() {
             [unowned self] () -> Void in
 
             // Prevent standing up the UI when being launched in the background

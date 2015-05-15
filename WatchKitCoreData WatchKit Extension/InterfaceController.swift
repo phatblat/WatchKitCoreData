@@ -6,16 +6,20 @@
 //  Copyright (c) 2015 Ben Chatelain. All rights reserved.
 //
 
-import WatchKit
 import Foundation
-
+import WatchKit
+import WatchKitCoreDataFramework
 
 class InterfaceController: WKInterfaceController {
 
+    var dataController: DataController?
+
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+
+        println(NSHomeDirectory())
+
+        dataController = AppGroupDataController() {}
     }
 
     override func willActivate() {
