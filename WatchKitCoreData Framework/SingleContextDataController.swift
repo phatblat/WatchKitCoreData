@@ -64,7 +64,7 @@ public class SingleContextDataController: DataController {
 
     /// http://martiancraft.com/blog/2015/03/core-data-stack/
     private func initializeCoreData() {
-        if let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd"),
+        if let modelURL = NSBundle.mainBundle().URLForResource("WatchKitCoreData", withExtension: "momd"),
         let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
             println("modelURL: \(modelURL)")
 
@@ -82,7 +82,7 @@ public class SingleContextDataController: DataController {
                     NSSQLitePragmasOption: ["journal_mode": "DELETE"]
                 ]
 
-                let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent("DataModel.sqlite")
+                let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent("DataStore.sqlite")
                 println("storeURL: \(storeURL)")
 
                 var error: NSError? = nil
