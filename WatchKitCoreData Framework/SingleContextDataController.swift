@@ -13,6 +13,8 @@ public class SingleContextDataController: DataController {
     public let mainContext: NSManagedObjectContext
 
     private let initCallback: InitCallback?
+    private let dataStore = "DataStore.sqlite"
+    private let dataModel = "WatchKitCoreData.momd"
 
     // MARK: - Public
 
@@ -66,7 +68,7 @@ public class SingleContextDataController: DataController {
 
     /// http://martiancraft.com/blog/2015/03/core-data-stack/
     private func initializeCoreData() {
-        if let modelURL = NSBundle.mainBundle().URLForResource("WatchKitCoreData", withExtension: "momd"),
+        if let modelURL = NSBundle.mainBundle().URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
         let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
             println("modelURL: \(modelURL)")
 
@@ -84,7 +86,7 @@ public class SingleContextDataController: DataController {
                     NSSQLitePragmasOption: ["journal_mode": "DELETE"]
                 ]
 
-                let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent("DataStore.sqlite")
+                let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent(self.dataStore)
                 println("storeURL: \(storeURL)")
 
                 var error: NSError? = nil
@@ -117,7 +119,7 @@ public class SingleContextDataController: DataController {
             }
         }
         else {
-            println("Unable to locate DataModel.momd in bundle")
+            println("Unable to locate \(dataModel) in bundle")
         }
     }
 

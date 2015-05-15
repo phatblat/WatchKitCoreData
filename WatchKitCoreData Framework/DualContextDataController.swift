@@ -15,6 +15,8 @@ public class DualContextDataController: DataController {
     private let privateContext: NSManagedObjectContext
 
     private let initCallback: InitCallback?
+    private let dataStore = "DataStore.sqlite"
+    private let dataModel = "WatchKitCoreData.momd"
 
     // MARK: - Public
 
@@ -72,7 +74,7 @@ public class DualContextDataController: DataController {
 
     /// http://martiancraft.com/blog/2015/03/core-data-stack/
     private func initializeCoreData() {
-        if let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd"),
+        if let modelURL = NSBundle.mainBundle().URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
                 let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
             println("modelURL: \(modelURL)")
 
@@ -93,7 +95,7 @@ public class DualContextDataController: DataController {
                 ]
 
                 if let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as? NSURL {
-                    let storeURL = documentsURL.URLByAppendingPathComponent("DataModel.sqlite")
+                    let storeURL = documentsURL.URLByAppendingPathComponent(self.dataStore)
                     println("storeURL: \(storeURL)")
 
                     var error: NSError? = nil
@@ -127,7 +129,7 @@ public class DualContextDataController: DataController {
             }
         }
         else {
-            println("Unable to locate DataModel.momd in bundle")
+            println("Unable to locate \(dataModel) in bundle")
         }
 
     }
