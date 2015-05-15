@@ -25,6 +25,8 @@
 		F87CD3951B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3941B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift */; };
 		F87CD3981B057A1B001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
 		F87CD3991B057A1B001455AC /* WatchKitCoreDataFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A11B057EF5001455AC /* DualContextDataController.swift */; };
+		F87CD3A41B057F79001455AC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A31B057F79001455AC /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,8 @@
 		F87CD38B1B057A1B001455AC /* WatchKitCoreData FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchKitCoreData FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87CD3931B057A1B001455AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87CD3941B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitCoreData_FrameworkTests.swift; sourceTree = "<group>"; };
+		F87CD3A11B057EF5001455AC /* DualContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualContextDataController.swift; sourceTree = "<group>"; };
+		F87CD3A31B057F79001455AC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,8 +267,10 @@
 		F87CD3821B057A1A001455AC /* WatchKitCoreData Framework */ = {
 			isa = PBXGroup;
 			children = (
-				F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */,
+				F87CD3A31B057F79001455AC /* DataController.swift */,
+				F87CD3A11B057EF5001455AC /* DualContextDataController.swift */,
 				F87CD3831B057A1B001455AC /* Supporting Files */,
+				F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */,
 			);
 			path = "WatchKitCoreData Framework";
 			sourceTree = "<group>";
@@ -556,6 +562,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */,
+				F87CD3A41B057F79001455AC /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +833,7 @@
 		F87CD39B1B057A1B001455AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -840,6 +849,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = WatchKitCoreDataFramework;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -848,6 +858,7 @@
 		F87CD39C1B057A1B001455AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
