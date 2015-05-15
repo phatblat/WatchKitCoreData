@@ -21,10 +21,10 @@
 		F87CD3711B0579B7001455AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F87CD3701B0579B7001455AC /* Images.xcassets */; };
 		F87CD3741B0579B7001455AC /* WatchKitCoreData WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F87CD35C1B0579B6001455AC /* WatchKitCoreData WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F87CD3861B057A1B001455AC /* WatchKitCoreData Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F87CD38C1B057A1B001455AC /* WatchKitCoreData Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */; };
+		F87CD38C1B057A1B001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
 		F87CD3951B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3941B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift */; };
-		F87CD3981B057A1B001455AC /* WatchKitCoreData Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */; };
-		F87CD3991B057A1B001455AC /* WatchKitCoreData Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F87CD3981B057A1B001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
+		F87CD3991B057A1B001455AC /* WatchKitCoreDataFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F87CD3991B057A1B001455AC /* WatchKitCoreData Framework.framework in Embed Frameworks */,
+				F87CD3991B057A1B001455AC /* WatchKitCoreDataFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +110,7 @@
 		F87CD36C1B0579B7001455AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87CD36E1B0579B7001455AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F87CD3701B0579B7001455AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "WatchKitCoreData Framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WatchKitCoreDataFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87CD3841B057A1B001455AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WatchKitCoreData Framework.h"; sourceTree = "<group>"; };
 		F87CD38B1B057A1B001455AC /* WatchKitCoreData FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchKitCoreData FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87CD3981B057A1B001455AC /* WatchKitCoreData Framework.framework in Frameworks */,
+				F87CD3981B057A1B001455AC /* WatchKitCoreDataFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87CD38C1B057A1B001455AC /* WatchKitCoreData Framework.framework in Frameworks */,
+				F87CD38C1B057A1B001455AC /* WatchKitCoreDataFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +179,7 @@
 				F87CD3481B05773C001455AC /* WatchKitCoreDataTests.xctest */,
 				F87CD35C1B0579B6001455AC /* WatchKitCoreData WatchKit Extension.appex */,
 				F87CD3661B0579B7001455AC /* WatchKitCoreData WatchKit App.app */,
-				F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */,
+				F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */,
 				F87CD38B1B057A1B001455AC /* WatchKitCoreData FrameworkTests.xctest */,
 			);
 			name = Products;
@@ -395,7 +395,7 @@
 			);
 			name = "WatchKitCoreData Framework";
 			productName = "WatchKitCoreData Framework";
-			productReference = F87CD3811B057A1A001455AC /* WatchKitCoreData Framework.framework */;
+			productReference = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F87CD38A1B057A1B001455AC /* WatchKitCoreData FrameworkTests */ = {
@@ -838,7 +838,7 @@
 				INFOPLIST_FILE = "WatchKitCoreData Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WatchKitCoreDataFramework;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -857,7 +857,7 @@
 				INFOPLIST_FILE = "WatchKitCoreData Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WatchKitCoreDataFramework;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -915,6 +915,7 @@
 				F87CD3541B05773C001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F87CD3551B05773C001455AC /* Build configuration list for PBXNativeTarget "WatchKitCoreDataTests" */ = {
 			isa = XCConfigurationList;
@@ -923,6 +924,7 @@
 				F87CD3571B05773C001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F87CD3751B0579B7001455AC /* Build configuration list for PBXNativeTarget "WatchKitCoreData WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -931,6 +933,7 @@
 				F87CD3771B0579B7001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F87CD3781B0579B7001455AC /* Build configuration list for PBXNativeTarget "WatchKitCoreData WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -939,6 +942,7 @@
 				F87CD37A1B0579B7001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F87CD39A1B057A1B001455AC /* Build configuration list for PBXNativeTarget "WatchKitCoreData Framework" */ = {
 			isa = XCConfigurationList;
@@ -947,6 +951,7 @@
 				F87CD39C1B057A1B001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F87CD39E1B057A1B001455AC /* Build configuration list for PBXNativeTarget "WatchKitCoreData FrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -955,6 +960,7 @@
 				F87CD3A01B057A1B001455AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
