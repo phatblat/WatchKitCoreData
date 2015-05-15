@@ -11,4 +11,9 @@ import WatchKitCoreDataFramework
 
 class AppDataController: SingleContextDataController {
 
+    func dataStoreDirectory() -> NSURL {
+        let appGroupIdentifier = ""
+        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupIdentifier)!
+    }
+
 }
