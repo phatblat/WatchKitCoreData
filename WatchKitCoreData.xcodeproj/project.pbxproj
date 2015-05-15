@@ -56,13 +56,6 @@
 			remoteGlobalIDString = F87CD3801B057A1A001455AC;
 			remoteInfo = "WatchKitCoreData Framework";
 		};
-		F87CD38F1B057A1B001455AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F87CD3281B05773C001455AC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F87CD32F1B05773C001455AC;
-			remoteInfo = WatchKitCoreData;
-		};
 		F87CD3961B057A1B001455AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F87CD3281B05773C001455AC /* Project object */;
@@ -417,7 +410,6 @@
 			);
 			dependencies = (
 				F87CD38E1B057A1B001455AC /* PBXTargetDependency */,
-				F87CD3901B057A1B001455AC /* PBXTargetDependency */,
 			);
 			name = "WatchKitCoreData FrameworkTests";
 			productName = "WatchKitCoreData FrameworkTests";
@@ -597,11 +589,6 @@
 			isa = PBXTargetDependency;
 			target = F87CD3801B057A1A001455AC /* WatchKitCoreData Framework */;
 			targetProxy = F87CD38D1B057A1B001455AC /* PBXContainerItemProxy */;
-		};
-		F87CD3901B057A1B001455AC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F87CD32F1B05773C001455AC /* WatchKitCoreData */;
-			targetProxy = F87CD38F1B057A1B001455AC /* PBXContainerItemProxy */;
 		};
 		F87CD3971B057A1B001455AC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
