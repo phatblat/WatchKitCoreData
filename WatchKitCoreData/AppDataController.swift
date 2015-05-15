@@ -12,7 +12,7 @@ import WatchKitCoreDataFramework
 class AppDataController: SingleContextDataController {
 
     func dataStoreDirectory() -> NSURL {
-        let appGroupIdentifier = ""
+        let appGroupIdentifier = "group.com.phatblat.WatchKitCoreData"
         return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupIdentifier)!
     }
 
