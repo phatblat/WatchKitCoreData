@@ -27,6 +27,7 @@
 		F87CD3991B057A1B001455AC /* WatchKitCoreDataFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A11B057EF5001455AC /* DualContextDataController.swift */; };
 		F87CD3A41B057F79001455AC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A31B057F79001455AC /* DataController.swift */; };
+		F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		F87CD3941B057A1B001455AC /* WatchKitCoreData_FrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitCoreData_FrameworkTests.swift; sourceTree = "<group>"; };
 		F87CD3A11B057EF5001455AC /* DualContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualContextDataController.swift; sourceTree = "<group>"; };
 		F87CD3A31B057F79001455AC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContextDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 			children = (
 				F87CD3A31B057F79001455AC /* DataController.swift */,
 				F87CD3A11B057EF5001455AC /* DualContextDataController.swift */,
+				F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */,
 				F87CD3831B057A1B001455AC /* Supporting Files */,
 				F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */,
 			);
@@ -563,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */,
+				F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */,
 				F87CD3A41B057F79001455AC /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

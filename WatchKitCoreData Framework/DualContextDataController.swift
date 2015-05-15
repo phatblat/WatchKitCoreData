@@ -102,21 +102,21 @@ class DualContextDataController: DataController {
                     }
                     else {
                         println("Error standing up store: \(error)")
-                        #if DEBUG
-                            // Blow away store
-                            if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
-                                println("Error removing store: \(error)")
-                            }
+#if DEBUG
+                        // Blow away store
+                        if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
+                            println("Error removing store: \(error)")
+                        }
 
-                            // Try again
-                            if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
-                                let callback = self.initCallback {
-                                // Call the callback on the main queue
-                                dispatch_sync(dispatch_get_main_queue()) {
-                                    callback()
-                                }
+                        // Try again
+                        if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
+                        let callback = self.initCallback {
+                            // Call the callback on the main queue
+                            dispatch_sync(dispatch_get_main_queue()) {
+                                callback()
                             }
-                        #endif
+                        }
+#endif
                     }
                 }
             }
