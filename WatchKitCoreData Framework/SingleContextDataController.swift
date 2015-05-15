@@ -36,6 +36,8 @@ public class SingleContextDataController: DataController {
         self.init(callback: nil)
     }
 
+    /// Saves changes from the mainContext down to the persistent store. This is
+    /// done synchronously on the calling queue.
     public func save() {
         if !mainContext.hasChanges {
             // Nothing to save
@@ -53,9 +55,9 @@ public class SingleContextDataController: DataController {
         }
     }
 
-    // MARK: - Internal
-
-    func dataStoreDirectory() -> NSURL {
+    /// Provides the URL to the folder where the persistent store is expected to reside.
+    /// Subclasses may override to point wherever desired.
+    public func dataStoreDirectory() -> NSURL {
         // App documents directory
         return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
     }

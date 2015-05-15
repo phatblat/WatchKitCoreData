@@ -16,6 +16,7 @@ public protocol DataController {
 
     init(callback: InitCallback?)
 
+    func dataStoreDirectory() -> NSURL
     func save()
 
 }

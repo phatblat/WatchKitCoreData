@@ -9,9 +9,9 @@
 import CoreData
 
 
-class DualContextDataController: DataController {
+public class DualContextDataController: DataController {
 
-    let mainContext: NSManagedObjectContext
+    public let mainContext: NSManagedObjectContext
     private let privateContext: NSManagedObjectContext
 
     private let initCallback: InitCallback?
@@ -25,7 +25,7 @@ class DualContextDataController: DataController {
     ///                  is done being stood up. Called on the main queue.
     ///
     /// :returns: an initialized DataController
-    required init(callback: InitCallback?) {
+    public required init(callback: InitCallback?) {
         initCallback = callback
 
         // Non-optional properties must be initialized in init, before any other calls
@@ -39,7 +39,7 @@ class DualContextDataController: DataController {
         self.init(callback: nil)
     }
 
-    func save() {
+    public func save() {
         if !privateContext.hasChanges && !mainContext.hasChanges {
             // Nothing to save
             return
@@ -61,6 +61,11 @@ class DualContextDataController: DataController {
                 }
             }
         }
+    }
+
+    public func dataStoreDirectory() -> NSURL {
+        // App documents directory
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
     }
 
     // MARK: - Private
