@@ -28,6 +28,7 @@
 		F87CD3A21B057EF5001455AC /* DualContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A11B057EF5001455AC /* DualContextDataController.swift */; };
 		F87CD3A41B057F79001455AC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A31B057F79001455AC /* DataController.swift */; };
 		F87CD3A61B0580F0001455AC /* SingleContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */; };
+		F87CD3A81B058B54001455AC /* AppDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3A71B058B54001455AC /* AppDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		F87CD3A11B057EF5001455AC /* DualContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualContextDataController.swift; sourceTree = "<group>"; };
 		F87CD3A31B057F79001455AC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContextDataController.swift; sourceTree = "<group>"; };
+		F87CD3A71B058B54001455AC /* AppDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,13 +196,14 @@
 		F87CD3321B05773C001455AC /* WatchKitCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F87CD3A71B058B54001455AC /* AppDataController.swift */,
 				F87CD3351B05773C001455AC /* AppDelegate.swift */,
-				F87CD33A1B05773C001455AC /* ViewController.swift */,
-				F87CD33C1B05773C001455AC /* Main.storyboard */,
 				F87CD33F1B05773C001455AC /* Images.xcassets */,
 				F87CD3411B05773C001455AC /* LaunchScreen.xib */,
-				F87CD3371B05773C001455AC /* WatchKitCoreData.xcdatamodeld */,
+				F87CD33C1B05773C001455AC /* Main.storyboard */,
 				F87CD3331B05773C001455AC /* Supporting Files */,
+				F87CD33A1B05773C001455AC /* ViewController.swift */,
+				F87CD3371B05773C001455AC /* WatchKitCoreData.xcdatamodeld */,
 			);
 			path = WatchKitCoreData;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87CD33B1B05773C001455AC /* ViewController.swift in Sources */,
+				F87CD3A81B058B54001455AC /* AppDataController.swift in Sources */,
 				F87CD3361B05773C001455AC /* AppDelegate.swift in Sources */,
 				F87CD3391B05773C001455AC /* WatchKitCoreData.xcdatamodeld in Sources */,
 			);

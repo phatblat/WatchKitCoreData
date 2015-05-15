@@ -8,9 +8,9 @@
 
 import CoreData
 
-class SingleContextDataController: DataController {
+public class SingleContextDataController: DataController {
 
-    let mainContext: NSManagedObjectContext
+    public let mainContext: NSManagedObjectContext
 
     private let initCallback: InitCallback?
 
@@ -23,7 +23,7 @@ class SingleContextDataController: DataController {
     ///                  is done being stood up. Called on the main queue.
     ///
     /// :returns: an initialized DataController
-    required init(callback: InitCallback?) {
+    public required init(callback: InitCallback?) {
         initCallback = callback
 
         // Non-optional properties must be initialized in init, before any other calls
@@ -36,7 +36,7 @@ class SingleContextDataController: DataController {
         self.init(callback: nil)
     }
 
-    func save() {
+    public func save() {
         if !mainContext.hasChanges {
             // Nothing to save
             return
