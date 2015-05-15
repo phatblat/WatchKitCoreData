@@ -8,12 +8,29 @@
 
 import UIKit
 import CoreData
+import WatchKitCoreDataFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var dataController: DataController?
 
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+
+        println(NSHomeDirectory())
+
+        dataController = AppDataController() {
+            [unowned self] () -> Void in
+
+            // Prevent standing up the UI when being launched in the background
+            if (application.applicationState != .Background) {
+                self.setupUI()
+            }
+        }
+
+        return true
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,8 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
+    /// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        // If launched in the background, but then transitioning into the foreground, we need to stand up the UI
+        if window == nil {
+            setupUI()
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -47,6 +68,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+    }
+
+    // MARK: - Private
+
+    /// Stands up the initial UI of the app
+    private func setupUI() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        if let vc = storyboard.instantiateInitialViewController() as? UIViewController {
+            self.window!.rootViewController = vc
+            self.window!.makeKeyAndVisible()
+        }
     }
 
 }
