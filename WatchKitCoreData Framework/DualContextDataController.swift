@@ -74,7 +74,7 @@ public class DualContextDataController: DataController {
 
     /// http://martiancraft.com/blog/2015/03/core-data-stack/
     private func initializeCoreData() {
-        if let modelURL = NSBundle.mainBundle().URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
+        if let modelURL = NSBundle(forClass: self.dynamicType).URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
                 let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
             println("modelURL: \(modelURL)")
 
