@@ -16,6 +16,7 @@ class Timer: NSObject {
     let context: NSManagedObjectContext
 
     private var timer: NSTimer?
+    private var counter: Counter?
 
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -29,7 +30,10 @@ class Timer: NSObject {
         if let result = context.executeFetchRequest(request, error:&error) as? [Counter] {
             if result.count < 1 {
                 insert()
+                return
             }
+            // Save a reference
+            self.counter = result.first
         }
         else {
             insert()
@@ -38,17 +42,24 @@ class Timer: NSObject {
 
     func update() {
         println("update")
+        counter?.count++
+        save()
     }
 
     private func insert() {
         if let entity = NSEntityDescription.entityForName("Counter", inManagedObjectContext: context),
         let counter = NSManagedObject(entity: entity, insertIntoManagedObjectContext: context) as? Counter {
             counter.count = 0
+            self.counter = counter
+            save()
+        }
+    }
 
-            var error: NSError?
-            if !context.save(&error) {
-                println("Error saving context: \(error)")
-            }
+    private func save() {
+
+        var error: NSError?
+        if !context.save(&error) {
+            println("Error saving context: \(error)")
         }
     }
 
