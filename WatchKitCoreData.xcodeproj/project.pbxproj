@@ -31,6 +31,7 @@
 		F87CD3B01B0651B0001455AC /* WatchKitCoreDataFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87CD3811B057A1A001455AC /* WatchKitCoreDataFramework.framework */; };
 		F87CD3B91B06E4A5001455AC /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3B61B06E4A5001455AC /* Counter.swift */; };
 		F87CD3BA1B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3B71B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld */; };
+		F87CD3BC1B06F71F001455AC /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		F87CD3AB1B065089001455AC /* AppGroupDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppGroupDataController.swift; path = "WatchKitCoreData Framework/AppGroupDataController.swift"; sourceTree = SOURCE_ROOT; };
 		F87CD3B61B06E4A5001455AC /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		F87CD3B81B06E4A5001455AC /* WatchKitCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WatchKitCoreData.xcdatamodel; sourceTree = "<group>"; };
+		F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +291,7 @@
 				F87CD3B51B06E460001455AC /* Data Model */,
 				F87CD3A31B057F79001455AC /* DataController.swift */,
 				F87CD3A11B057EF5001455AC /* DualContextDataController.swift */,
+				F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */,
 				F87CD3A51B0580F0001455AC /* SingleContextDataController.swift */,
 				F87CD3831B057A1B001455AC /* Supporting Files */,
 				F87CD3851B057A1B001455AC /* WatchKitCoreData Framework.h */,
@@ -607,6 +610,7 @@
 				F87CD3A41B057F79001455AC /* DataController.swift in Sources */,
 				F87CD3AC1B065089001455AC /* AppGroupDataController.swift in Sources */,
 				F87CD3B91B06E4A5001455AC /* Counter.swift in Sources */,
+				F87CD3BC1B06F71F001455AC /* FetchedResultsControllerDelegate.swift in Sources */,
 				F87CD3BA1B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
