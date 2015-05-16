@@ -12,6 +12,8 @@ import WatchKitCoreDataFramework
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var counterLabel: WKInterfaceLabel?
+
     var dataController: DataController?
 
     override func awakeWithContext(context: AnyObject?) {
@@ -19,16 +21,17 @@ class InterfaceController: WKInterfaceController {
 
         println(NSHomeDirectory())
 
+        counterLabel?.setText("-1")
         dataController = AppGroupDataController() {}
     }
 
+    /// This method is called when watch view controller is about to be visible to user
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
 
+    /// This method is called when watch view controller is no longer visible
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
 
