@@ -78,7 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        if let vc = storyboard.instantiateInitialViewController() as? UIViewController {
+        if let vc = storyboard.instantiateInitialViewController() as? ViewController {
+            vc.dataController = dataController
             self.window!.rootViewController = vc
             self.window!.makeKeyAndVisible()
         }

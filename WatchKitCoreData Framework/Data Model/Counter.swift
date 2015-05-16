@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-class Counter: NSManagedObject {
+public class Counter: NSManagedObject {
 
-    @NSManaged var count: Int64
+    @NSManaged public var count: Int64
 
 }

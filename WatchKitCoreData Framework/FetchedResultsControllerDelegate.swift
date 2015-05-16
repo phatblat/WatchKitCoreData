@@ -24,7 +24,7 @@ public class FetchedResultsControllerDelegate: NSFetchedResultsControllerDelegat
 
     public var ignoreNextUpdates: Bool = false
 
-    init() { }
+    public init() { }
 
     // MARK: - NSFetchedResultsControllerDelegate
 
