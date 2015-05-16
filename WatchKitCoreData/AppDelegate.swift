@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var dataController: DataController?
+    var timer: Timer?
 
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (application.applicationState != .Background) {
                 self.setupUI()
             }
+
+            self.timer = Timer(context: self.dataController!.mainContext)
         }
 
         return true

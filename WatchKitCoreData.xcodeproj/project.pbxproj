@@ -32,6 +32,7 @@
 		F87CD3B91B06E4A5001455AC /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3B61B06E4A5001455AC /* Counter.swift */; };
 		F87CD3BA1B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3B71B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld */; };
 		F87CD3BC1B06F71F001455AC /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */; };
+		F87CD3BE1B071A45001455AC /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3BD1B071A45001455AC /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		F87CD3B61B06E4A5001455AC /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		F87CD3B81B06E4A5001455AC /* WatchKitCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WatchKitCoreData.xcdatamodel; sourceTree = "<group>"; };
 		F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		F87CD3BD1B071A45001455AC /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				F87CD3411B05773C001455AC /* LaunchScreen.xib */,
 				F87CD33C1B05773C001455AC /* Main.storyboard */,
 				F87CD3331B05773C001455AC /* Supporting Files */,
+				F87CD3BD1B071A45001455AC /* Timer.swift */,
 				F87CD33A1B05773C001455AC /* ViewController.swift */,
 				F87CD3A91B059300001455AC /* WatchKitCoreData.entitlements */,
 			);
@@ -580,6 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87CD3BE1B071A45001455AC /* Timer.swift in Sources */,
 				F87CD33B1B05773C001455AC /* ViewController.swift in Sources */,
 				F87CD3361B05773C001455AC /* AppDelegate.swift in Sources */,
 			);
