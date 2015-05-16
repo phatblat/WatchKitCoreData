@@ -83,6 +83,9 @@ public class SingleContextDataController: DataController {
                 let options: [NSObject : AnyObject] = [
                     NSMigratePersistentStoresAutomaticallyOption: true,
                     NSInferMappingModelAutomaticallyOption: true,
+
+                    // Use WAL mode to prevent getting jetsam'd
+                    // https://developer.apple.com/library/ios/technotes/tn2408/_index.html
                     NSSQLitePragmasOption: ["journal_mode": "DELETE"]
                 ]
 
