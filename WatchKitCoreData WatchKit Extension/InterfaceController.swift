@@ -11,12 +11,30 @@ import Foundation
 import WatchKit
 import WatchKitCoreDataFramework
 
+@objc
 class InterfaceController: WKInterfaceController, DataConsumer {
 
     @IBOutlet weak var counterLabel: WKInterfaceLabel?
 
     var dataController: DataController?
     var timer: Timer?
+
+    // MARK: - NSObject
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    override init() {
+        super.init()
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: Selector("contextChanged:"),
+            name: NSManagedObjectContextDidSaveNotification,
+            object: nil)
+    }
+
+    // MARK: - WKInterfaceController
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -94,5 +112,11 @@ class InterfaceController: WKInterfaceController, DataConsumer {
         }
         return delegate
     }()
+
+    // MARK: - Notification Handler
+
+    @objc func contextChanged(notificaiton: NSNotification) {
+        println("contextChanged:")
+    }
 
 }

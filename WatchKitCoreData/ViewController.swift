@@ -10,12 +10,28 @@ import CoreData
 import UIKit
 import WatchKitCoreDataFramework
 
+@objc
 class ViewController: UIViewController, DataConsumer {
 
     @IBOutlet weak var counterLabel: UILabel?
 
     var dataController: DataController?
     var timer: Timer?
+
+    // MARK: - NSObject
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: Selector("contextChanged:"),
+            name: NSManagedObjectContextDidSaveNotification,
+            object: nil)
+    }
 
     // MARK: - UIViewController
 
@@ -90,5 +106,12 @@ class ViewController: UIViewController, DataConsumer {
     func reset() {
         timer?.reset()
     }
+
+    // MARK: - Notification Handler
+
+    @objc func contextChanged(notificaiton: NSNotification) {
+        println("contextChanged:")
+    }
+
 }
 
