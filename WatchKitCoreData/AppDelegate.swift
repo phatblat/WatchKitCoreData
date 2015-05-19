@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var dataController: DataController?
-    var timer: Timer?
 
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -28,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (application.applicationState != .Background) {
                 self.setupUI()
             }
-
-            self.timer = Timer(context: self.dataController!.mainContext)
-            self.timer?.start()
         }
 
         return true
@@ -80,12 +76,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Stands up the initial UI of the app.
     private func setupUI() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        if let vc = storyboard.instantiateInitialViewController() as? UIViewController {
 
-        if let vc = storyboard.instantiateInitialViewController() as? ViewController {
-            vc.dataController = dataController
-            self.window!.rootViewController = vc
-            self.window!.makeKeyAndVisible()
+            let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
+            self.window = window
+
+            // Pass the data controller down through the UI
+            if let dc = vc as? DataConsumer {
+                dc.dataController = dataController
+            }
         }
     }
 

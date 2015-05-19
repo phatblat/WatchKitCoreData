@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F814516A1B0AB43C00C7DDEB /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81451691B0AB43C00C7DDEB /* Timer.swift */; };
+		F814516C1B0AC7F300C7DDEB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F814516B1B0AC7F300C7DDEB /* NavigationController.swift */; };
+		F81451721B0AC9C200C7DDEB /* DataConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81451711B0AC9C200C7DDEB /* DataConsumer.swift */; };
 		F87CD3361B05773C001455AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD3351B05773C001455AC /* AppDelegate.swift */; };
 		F87CD33B1B05773C001455AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD33A1B05773C001455AC /* ViewController.swift */; };
 		F87CD33E1B05773C001455AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F87CD33C1B05773C001455AC /* Main.storyboard */; };
@@ -107,6 +109,8 @@
 
 /* Begin PBXFileReference section */
 		F81451691B0AB43C00C7DDEB /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		F814516B1B0AC7F300C7DDEB /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F81451711B0AC9C200C7DDEB /* DataConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConsumer.swift; sourceTree = "<group>"; };
 		F87CD3301B05773C001455AC /* WatchKitCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchKitCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87CD3341B05773C001455AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87CD3351B05773C001455AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				F87CD33F1B05773C001455AC /* Images.xcassets */,
 				F87CD3411B05773C001455AC /* LaunchScreen.xib */,
 				F87CD33C1B05773C001455AC /* Main.storyboard */,
+				F814516B1B0AC7F300C7DDEB /* NavigationController.swift */,
 				F87CD3331B05773C001455AC /* Supporting Files */,
 				F87CD33A1B05773C001455AC /* ViewController.swift */,
 				F87CD3A91B059300001455AC /* WatchKitCoreData.entitlements */,
@@ -291,6 +296,7 @@
 			children = (
 				F87CD3AB1B065089001455AC /* AppGroupDataController.swift */,
 				F87CD3B51B06E460001455AC /* Data Model */,
+				F81451711B0AC9C200C7DDEB /* DataConsumer.swift */,
 				F87CD3A31B057F79001455AC /* DataController.swift */,
 				F87CD3A11B057EF5001455AC /* DualContextDataController.swift */,
 				F87CD3BB1B06F71F001455AC /* FetchedResultsControllerDelegate.swift */,
@@ -584,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87CD33B1B05773C001455AC /* ViewController.swift in Sources */,
+				F814516C1B0AC7F300C7DDEB /* NavigationController.swift in Sources */,
 				F87CD3361B05773C001455AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +623,7 @@
 				F87CD3BC1B06F71F001455AC /* FetchedResultsControllerDelegate.swift in Sources */,
 				F814516A1B0AB43C00C7DDEB /* Timer.swift in Sources */,
 				F87CD3BA1B06E4A5001455AC /* WatchKitCoreData.xcdatamodeld in Sources */,
+				F81451721B0AC9C200C7DDEB /* DataConsumer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

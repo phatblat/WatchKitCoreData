@@ -10,17 +10,19 @@ import CoreData
 import UIKit
 import WatchKitCoreDataFramework
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DataConsumer {
 
     @IBOutlet weak var counterLabel: UILabel?
 
     var dataController: DataController?
+    var timer: Timer?
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         counterLabel?.text = "-1"
+        self.timer = Timer(context: self.dataController!.mainContext)
         fetchedResultsController.delegate = fetchedResultsControllerDelegate
     }
 
@@ -57,5 +59,31 @@ class ViewController: UIViewController {
         return delegate
     }()
 
+    // MARK: - IBAction
+
+    @IBAction func showActionMenu(sender: AnyObject) {
+        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        menu.addAction(UIAlertAction(title: "Start", style: UIAlertActionStyle.Default,
+            handler: { (alert: UIAlertAction!) in self.start() }))
+        menu.addAction(UIAlertAction(title: "Stop", style: UIAlertActionStyle.Default,
+            handler: { (alert: UIAlertAction!) in self.stop() }))
+        menu.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.Destructive,
+            handler: { (alert: UIAlertAction!) in self.reset() }))
+        menu.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+
+        presentViewController(menu, animated: true, completion: nil)
+    }
+
+    func start() {
+        timer?.start()
+    }
+
+    func stop() {
+        timer?.stop()
+    }
+
+    func reset() {
+        timer?.reset()
+    }
 }
 

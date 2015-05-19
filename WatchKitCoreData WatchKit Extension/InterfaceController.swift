@@ -11,7 +11,7 @@ import Foundation
 import WatchKit
 import WatchKitCoreDataFramework
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, DataConsumer {
 
     @IBOutlet weak var counterLabel: WKInterfaceLabel?
 
