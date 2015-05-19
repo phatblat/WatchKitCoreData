@@ -43,6 +43,20 @@ class InterfaceController: WKInterfaceController {
         fetchedResultsController.delegate = nil
     }
 
+    // MARK: - IBActions
+
+    @IBAction func start() {
+        timer?.start()
+    }
+
+    @IBAction func stop() {
+        timer?.stop()
+    }
+
+    @IBAction func reset() {
+        timer?.reset()
+    }
+
     // MARK: - Data
 
     private lazy var fetchedResultsController: NSFetchedResultsController = {

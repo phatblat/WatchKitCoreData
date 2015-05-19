@@ -35,6 +35,13 @@ public class Timer: NSObject {
         timer = nil
     }
 
+    public func reset() {
+        counter?.count = 0
+        save()
+    }
+
+    // MARK: - Internal
+
     func update() {
         println("update")
         counter?.count++

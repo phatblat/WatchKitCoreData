@@ -12,6 +12,25 @@
                     <items>
                         <label alignment="center" verticalAlignment="center" text="Label" id="Z9q-yr-mRf"/>
                     </items>
+                    <menu key="menu" id="ata-K6-4g4">
+                        <items>
+                            <menuItem title="Start" icon="play" id="pAl-m3-Qb4">
+                                <connections>
+                                    <action selector="start" destination="AgC-eL-Hgc" id="lcX-2l-2kf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop" icon="pause" id="x9a-1n-fKF">
+                                <connections>
+                                    <action selector="stop" destination="AgC-eL-Hgc" id="get-5v-yad"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Reset" icon="repeat" id="2zW-Q6-3g2">
+                                <connections>
+                                    <action selector="reset" destination="AgC-eL-Hgc" id="Nwj-rp-4Ut"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="counterLabel" destination="Z9q-yr-mRf" id="UKu-s1-eQr"/>
