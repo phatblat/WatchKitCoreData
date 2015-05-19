@@ -23,14 +23,19 @@ class ViewController: UIViewController, DataConsumer {
         super.viewDidLoad()
         counterLabel?.text = "-1"
         self.timer = Timer(context: self.dataController!.mainContext)
-        fetchedResultsController.delegate = fetchedResultsControllerDelegate
+
+        if let objects = fetchedResultsController.fetchedObjects as? [Counter],
+        let counter = objects.first {
+            counterLabel?.text = "\(counter.count)"
+        }
     }
 
     // MARK: - Data
 
     private lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "Counter")
-         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
+        fetchRequest.fetchBatchSize = 1
 
         let context = self.dataController?.mainContext
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
