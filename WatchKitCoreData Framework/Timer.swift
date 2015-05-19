@@ -23,8 +23,27 @@ public class Timer: NSObject {
 
         super.init()
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+        setup()
+    }
 
+    public func start() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+    }
+
+    public func stop() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func update() {
+        println("update")
+        counter?.count++
+        save()
+    }
+
+    // MARK: - Private Methods
+
+    private func setup() {
         var error: NSError?
         var request = NSFetchRequest(entityName: "Counter")
         if let result = context.executeFetchRequest(request, error:&error) as? [Counter] {
@@ -38,12 +57,6 @@ public class Timer: NSObject {
         else {
             insert()
         }
-    }
-
-    func update() {
-        println("update")
-        counter?.count++
-        save()
     }
 
     private func insert() {
