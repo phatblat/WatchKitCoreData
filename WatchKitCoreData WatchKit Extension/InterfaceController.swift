@@ -28,19 +28,23 @@ class InterfaceController: WKInterfaceController, DataConsumer {
             [unowned self] () -> Void in
 
             self.timer = Timer(context: self.dataController!.mainContext)
+
+            if let objects = self.fetchedResultsController.fetchedObjects as? [Counter],
+            let counter = objects.first {
+                self.counterLabel?.setText("\(counter.count)")
+            }
         }
     }
 
     /// This method is called when watch view controller is about to be visible to user
     override func willActivate() {
         super.willActivate()
-        fetchedResultsController.delegate = fetchedResultsControllerDelegate
     }
 
     /// This method is called when watch view controller is no longer visible
     override func didDeactivate() {
         super.didDeactivate()
-        fetchedResultsController.delegate = nil
+//        fetchedResultsController.delegate = nil
     }
 
     // MARK: - IBActions
@@ -62,6 +66,7 @@ class InterfaceController: WKInterfaceController, DataConsumer {
     private lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "Counter")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
+        fetchRequest.fetchBatchSize = 1
 
         let context = self.dataController?.mainContext
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
