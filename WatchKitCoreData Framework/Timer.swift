@@ -11,14 +11,14 @@ import Foundation
 import WatchKitCoreDataFramework
 
 @objc
-class Timer: NSObject {
+public class Timer: NSObject {
 
     let context: NSManagedObjectContext
 
     private var timer: NSTimer?
     private var counter: Counter?
 
-    init(context: NSManagedObjectContext) {
+    public init(context: NSManagedObjectContext) {
         self.context = context
 
         super.init()
