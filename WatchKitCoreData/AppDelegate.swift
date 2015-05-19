@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             self.timer = Timer(context: self.dataController!.mainContext)
+            self.timer?.start()
         }
 
         return true
