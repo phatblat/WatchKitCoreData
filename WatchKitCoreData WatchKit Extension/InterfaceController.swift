@@ -16,6 +16,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var counterLabel: WKInterfaceLabel?
 
     var dataController: DataController?
+    var timer: Timer?
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -23,7 +24,11 @@ class InterfaceController: WKInterfaceController {
         println(NSHomeDirectory())
 
         counterLabel?.setText("-1")
-        dataController = AppGroupDataController() {}
+        dataController = AppGroupDataController() {
+            [unowned self] () -> Void in
+
+            self.timer = Timer(context: self.dataController!.mainContext)
+        }
     }
 
     /// This method is called when watch view controller is about to be visible to user
