@@ -30,6 +30,7 @@ public class SingleContextDataController: DataController {
 
         // Non-optional properties must be initialized in init, before any other calls
         mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        mainContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
 
         initializeCoreData()
     }

@@ -33,6 +33,7 @@ public class DualContextDataController: DataController {
         // Non-optional properties must be initialized in init, before any other calls
         mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        privateContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
 
         initializeCoreData()
     }
