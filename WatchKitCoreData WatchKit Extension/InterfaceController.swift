@@ -62,21 +62,6 @@ class InterfaceController: WKInterfaceController, DataConsumer {
     /// This method is called when watch view controller is no longer visible
     override func didDeactivate() {
         super.didDeactivate()
-//        fetchedResultsController.delegate = nil
-    }
-
-    // MARK: - IBActions
-
-    @IBAction func start() {
-        timer?.start()
-    }
-
-    @IBAction func stop() {
-        timer?.stop()
-    }
-
-    @IBAction func reset() {
-        timer?.reset()
     }
 
     // MARK: - Data
@@ -115,8 +100,22 @@ class InterfaceController: WKInterfaceController, DataConsumer {
 
     // MARK: - Notification Handler
 
-    @objc func contextChanged(notificaiton: NSNotification) {
+    @objc func contextChanged(notification: NSNotification) {
         println("contextChanged:")
+    }
+
+    // MARK: - IBActions
+
+    @IBAction func start() {
+        timer?.start()
+    }
+
+    @IBAction func stop() {
+        timer?.stop()
+    }
+
+    @IBAction func reset() {
+        timer?.reset()
     }
 
 }

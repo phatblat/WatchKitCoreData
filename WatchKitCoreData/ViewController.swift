@@ -80,7 +80,13 @@ class ViewController: UIViewController, DataConsumer {
         return delegate
     }()
 
-    // MARK: - IBAction
+    // MARK: - Notification Handler
+
+    @objc func contextChanged(notification: NSNotification) {
+        println("contextChanged:")
+    }
+
+    // MARK: - IBActions
 
     @IBAction func showActionMenu(sender: AnyObject) {
         let menu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -105,12 +111,6 @@ class ViewController: UIViewController, DataConsumer {
 
     func reset() {
         timer?.reset()
-    }
-
-    // MARK: - Notification Handler
-
-    @objc func contextChanged(notificaiton: NSNotification) {
-        println("contextChanged:")
     }
 
 }
