@@ -48,6 +48,20 @@
                ReferencedContainer = "container:WatchKitCoreData.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F8DDF5991B0D79E400DF783D"
+               BuildableName = "WatchKitCoreDataFrameworkTests.xctest"
+               BlueprintName = "WatchKitCoreDataFrameworkTests"
+               ReferencedContainer = "container:WatchKitCoreData.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -56,6 +70,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F8DDF5991B0D79E400DF783D"
+               BuildableName = "WatchKitCoreDataFrameworkTests.xctest"
+               BlueprintName = "WatchKitCoreDataFrameworkTests"
+               ReferencedContainer = "container:WatchKitCoreData.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -1,15 +1,15 @@
 //
-//  WatchKitCoreData_FrameworkTests.swift
-//  WatchKitCoreData FrameworkTests
+//  WatchKitCoreDataFrameworkTests.swift
+//  WatchKitCoreDataFrameworkTests
 //
-//  Created by Ben Chatelain on 5/14/15.
+//  Created by Ben Chatelain on 5/20/15.
 //  Copyright (c) 2015 Ben Chatelain. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class WatchKitCoreData_FrameworkTests: XCTestCase {
+class WatchKitCoreDataFrameworkTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
