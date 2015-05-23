@@ -18,6 +18,8 @@ class ViewController: UIViewController, DataConsumer {
     var dataController: DataController?
     var timer: Timer?
 
+    let notificationController = NotificationController(send: .Watch)
+
     // MARK: - NSObject
 
     deinit {
@@ -27,9 +29,14 @@ class ViewController: UIViewController, DataConsumer {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
+//        NSNotificationCenter.defaultCenter().addObserver(self,
+//            selector: Selector("contextChanged:"),
+//            name: NSManagedObjectContextDidSaveNotification,
+//            object: nil)
+
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: Selector("contextChanged:"),
-            name: NSManagedObjectContextDidSaveNotification,
+            name: "ContextChanged",
             object: nil)
     }
 
@@ -112,6 +119,7 @@ class ViewController: UIViewController, DataConsumer {
     func reset() {
         timer?.reset()
     }
+
 
 }
 

@@ -34,6 +34,7 @@
 		F8DDF5C01B0D7A4100DF783D /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DDF5B71B0D7A4100DF783D /* FetchedResultsControllerDelegate.swift */; };
 		F8DDF5C11B0D7A4100DF783D /* SingleContextDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DDF5B81B0D7A4100DF783D /* SingleContextDataController.swift */; };
 		F8DDF5C21B0D7A4100DF783D /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DDF5B91B0D7A4100DF783D /* Timer.swift */; };
+		F8DDF5C61B0FF61D00DF783D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DDF5C51B0FF61D00DF783D /* NotificationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		F8DDF5B71B0D7A4100DF783D /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		F8DDF5B81B0D7A4100DF783D /* SingleContextDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContextDataController.swift; sourceTree = "<group>"; };
 		F8DDF5B91B0D7A4100DF783D /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		F8DDF5C51B0FF61D00DF783D /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,10 +307,11 @@
 				F8DDF5B51B0D7A4100DF783D /* DataController.swift */,
 				F8DDF5B61B0D7A4100DF783D /* DualContextDataController.swift */,
 				F8DDF5B71B0D7A4100DF783D /* FetchedResultsControllerDelegate.swift */,
+				F8DDF5C51B0FF61D00DF783D /* NotificationController.swift */,
 				F8DDF5B81B0D7A4100DF783D /* SingleContextDataController.swift */,
+				F8DDF5921B0D79E400DF783D /* Supporting Files */,
 				F8DDF5B91B0D7A4100DF783D /* Timer.swift */,
 				F8DDF5941B0D79E400DF783D /* WatchKitCoreDataFramework.h */,
-				F8DDF5921B0D79E400DF783D /* Supporting Files */,
 			);
 			path = WatchKitCoreDataFramework;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8DDF5C61B0FF61D00DF783D /* NotificationController.swift in Sources */,
 				F8DDF5BE1B0D7A4100DF783D /* DataController.swift in Sources */,
 				F8DDF5BB1B0D7A4100DF783D /* Counter.swift in Sources */,
 				F8DDF5BA1B0D7A4100DF783D /* AppGroupDataController.swift in Sources */,
