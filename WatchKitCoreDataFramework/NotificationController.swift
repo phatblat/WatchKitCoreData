@@ -46,7 +46,7 @@ public class NotificationController: NSObject {
     // MARK: - Notification Handler
 
     @objc func contextChanged(notification: NSNotification) {
-        println(broadcastIdentifier.rawValue)
+        println("Sending darwin notification: \(broadcastIdentifier.rawValue)")
         NotificationController.sendDarwinNotificationWithIdentifier(broadcastIdentifier.rawValue)
     }
 
@@ -76,6 +76,8 @@ public class NotificationController: NSObject {
             (center, observer, name, object, userInfo) in
 
             let identifier = name as NSString
+            println("Callback called with identifier: \(identifier)")
+
             NSNotificationCenter.defaultCenter().postNotificationName(localIdentifier, object: nil,
                 userInfo:["identifier": identifier])
         }
@@ -94,10 +96,8 @@ public class NotificationController: NSObject {
         _ suspensionBehavior: CFNotificationSuspensionBehavior)
         */
 
-        let observer = unsafeBitCast(self, UnsafePointer<Void>.self)
-
         CFNotificationCenterAddObserver(center,
-            observer,
+            nil as UnsafePointer<Void>,
             callback,
             identifier as CFString!,
             nil as UnsafePointer<Void>,
