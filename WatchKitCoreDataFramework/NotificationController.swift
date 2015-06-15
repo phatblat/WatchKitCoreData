@@ -40,7 +40,7 @@ public class NotificationController: NSObject {
             name: NSManagedObjectContextDidSaveNotification,
             object: nil)
 
-        NotificationController.registerForDarwinNotificationsWithIdentifier(listenIdentifier.rawValue, forwardUsingIdentifier: "ContextChanged")
+        NotificationController.registerForDarwinNotificationsWithIdentifier(listenIdentifier, forwardUsingIdentifier: "ContextChanged")
     }
 
     // MARK: - Notification Handler
@@ -66,7 +66,7 @@ public class NotificationController: NSObject {
             userInfo:["identifier": identifier])
     }
 
-    public class func registerForDarwinNotificationsWithIdentifier(identifier: String, forwardUsingIdentifier localIdentifier: String) {
+    public class func registerForDarwinNotificationsWithIdentifier(listenIdentifier: ChangeIdentifier, forwardUsingIdentifier localIdentifier: String) {
 
         let center = CFNotificationCenterGetDarwinNotifyCenter()
 
@@ -79,12 +79,34 @@ public class NotificationController: NSObject {
         _ suspensionBehavior: CFNotificationSuspensionBehavior)
         */
 
-        CFNotificationCenterAddObserver(center,
-            nil,
-            { _ in print("Callback called") },
-            identifier,
-            nil,
-            CFNotificationSuspensionBehavior.DeliverImmediately)
+        switch (listenIdentifier) {
+        case .Phone:
+            CFNotificationCenterAddObserver(center,
+                nil,
+                { _ in
+                    // Duplication intentional, since C closures can't capture values
+                    let identifier = "PhoneContextChanged"
+                    print("Callback called \(identifier)")
+                    NSNotificationCenter.defaultCenter().postNotificationName(identifier, object: nil,
+                        userInfo: nil)
+                },
+                listenIdentifier.rawValue,
+                nil,
+                CFNotificationSuspensionBehavior.DeliverImmediately)
+        case .Watch:
+            CFNotificationCenterAddObserver(center,
+                nil,
+                { _ in
+                    // Duplication intentional, since C closures can't capture values
+                    let identifier = "WatchContextChanged"
+                    print("Callback called \(identifier)")
+                    NSNotificationCenter.defaultCenter().postNotificationName(identifier, object: nil,
+                        userInfo: nil)
+                },
+                listenIdentifier.rawValue,
+                nil,
+                CFNotificationSuspensionBehavior.DeliverImmediately)
+        }
     }
 
 }
