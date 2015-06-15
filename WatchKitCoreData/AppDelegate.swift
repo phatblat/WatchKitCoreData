@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        println(NSHomeDirectory())
+        print(NSHomeDirectory())
 
         dataController = AppGroupDataController() {
             [unowned self] () -> Void in
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Stands up the initial UI of the app.
     private func setupUI() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateInitialViewController() as? UIViewController {
+        if let vc = storyboard.instantiateInitialViewController() {
 
             let window = UIWindow(frame: UIScreen.mainScreen().bounds)
             window.rootViewController = vc

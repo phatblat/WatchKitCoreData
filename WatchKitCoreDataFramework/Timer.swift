@@ -43,7 +43,7 @@ public class Timer: NSObject {
     // MARK: - Internal
 
     func update() {
-        println("update")
+        print("update")
         counter?.count++
         save()
     }
@@ -51,18 +51,19 @@ public class Timer: NSObject {
     // MARK: - Private Methods
 
     private func setup() {
-        var error: NSError?
-        var request = NSFetchRequest(entityName: "Counter")
-        if let result = context.executeFetchRequest(request, error:&error) as? [Counter] {
-            if result.count < 1 {
-                insert()
-                return
+        let request = NSFetchRequest(entityName: "Counter")
+        do {
+            if let result = try! context.executeFetchRequest(request) as? [Counter] {
+                if result.count < 1 {
+                    insert()
+                    return
+                }
+                // Save a reference
+                self.counter = result.first
             }
-            // Save a reference
-            self.counter = result.first
-        }
-        else {
-            insert()
+            else {
+                insert()
+            }
         }
     }
 
@@ -76,10 +77,10 @@ public class Timer: NSObject {
     }
 
     private func save() {
-
-        var error: NSError?
-        if !context.save(&error) {
-            println("Error saving context: \(error)")
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context: \(error)")
         }
     }
 

@@ -46,7 +46,7 @@ public class NotificationController: NSObject {
     // MARK: - Notification Handler
 
     @objc func contextChanged(notification: NSNotification) {
-        println("Sending darwin notification: \(broadcastIdentifier.rawValue)")
+        print("Sending darwin notification: \(broadcastIdentifier.rawValue)")
         NotificationController.sendDarwinNotificationWithIdentifier(broadcastIdentifier.rawValue)
     }
 
@@ -54,11 +54,8 @@ public class NotificationController: NSObject {
 
     public class func sendDarwinNotificationWithIdentifier(identifier: String) {
         let center = CFNotificationCenterGetDarwinNotifyCenter()
-//        let object: UnsafePointer<Void> = nil
-//        let userInfo: CFDictionary = [:]
-        let deliverImmediately: Boolean = Boolean()
-//        CFStringRef str = (__bridge CFStringRef)identifier
-        CFNotificationCenterPostNotification(center, identifier as CFString, nil, nil, deliverImmediately)
+        let deliverImmediately = CFBooleanGetValue(true)
+        CFNotificationCenterPostNotification(center, identifier, nil, nil, deliverImmediately)
     }
 
 /// Callback function to convert a Darwin notification (interprocess) into a local NSNotification.
@@ -70,20 +67,6 @@ public class NotificationController: NSObject {
     }
 
     public class func registerForDarwinNotificationsWithIdentifier(identifier: String, forwardUsingIdentifier localIdentifier: String) {
-
-        let block: @objc_block
-        (CFNotificationCenter!, UnsafeMutablePointer<Void>, CFString!, UnsafePointer<Void>, CFDictionary!) -> Void = {
-            (center, observer, name, object, userInfo) in
-
-            let identifier = name as NSString
-            println("Callback called with identifier: \(identifier)")
-
-            NSNotificationCenter.defaultCenter().postNotificationName(localIdentifier, object: nil,
-                userInfo:["identifier": identifier])
-        }
-
-        let imp: COpaquePointer = imp_implementationWithBlock(unsafeBitCast(block, AnyObject.self))
-        let callback: CFNotificationCallback = unsafeBitCast(imp, CFNotificationCallback.self)
 
         let center = CFNotificationCenterGetDarwinNotifyCenter()
 
@@ -97,10 +80,10 @@ public class NotificationController: NSObject {
         */
 
         CFNotificationCenterAddObserver(center,
-            nil as UnsafePointer<Void>,
-            callback,
-            identifier as CFString!,
-            nil as UnsafePointer<Void>,
+            nil,
+            { _ in print("Callback called") },
+            identifier,
+            nil,
             CFNotificationSuspensionBehavior.DeliverImmediately)
     }
 

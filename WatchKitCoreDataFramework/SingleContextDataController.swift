@@ -21,10 +21,10 @@ public class SingleContextDataController: DataController {
     /// Initializes a new instance, spinning off the store setup to a background
     /// queue.
     ///
-    /// :param: callback An InitCallBack to be called once the Core Data stack
+    /// - parameter callback: An InitCallBack to be called once the Core Data stack
     ///                  is done being stood up. Called on the main queue.
     ///
-    /// :returns: an initialized DataController
+    /// - returns: an initialized DataController
     public required init(callback: InitCallback?) {
         initCallback = callback
 
@@ -50,9 +50,10 @@ public class SingleContextDataController: DataController {
         mainContext.performBlockAndWait() {
             [unowned self] () -> Void in
 
-            var error: NSError? = nil
-            if !self.mainContext.save(&error) {
-                println("Error saving mainContext: \(error)")
+            do {
+                try self.mainContext.save()
+            } catch {
+                print("Error saving mainContext: \(error)")
                 return
             }
         }
@@ -62,7 +63,7 @@ public class SingleContextDataController: DataController {
     /// Subclasses may override to point wherever desired.
     public func dataStoreDirectory() -> NSURL {
         // App documents directory
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
     }
 
     // MARK: - Private
@@ -71,7 +72,7 @@ public class SingleContextDataController: DataController {
     private func initializeCoreData() {
         if let modelURL = NSBundle(forClass: self.dynamicType).URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
         let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
-            println("modelURL: \(modelURL)")
+            print("modelURL: \(modelURL)")
 
             let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
             mainContext.persistentStoreCoordinator = coordinator
@@ -91,28 +92,28 @@ public class SingleContextDataController: DataController {
                 ]
 
                 let storeURL = self.dataStoreDirectory().URLByAppendingPathComponent(self.dataStore)
-                println("storeURL: \(storeURL)")
+                print("storeURL: \(storeURL)")
 
-                var error: NSError? = nil
-                if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error) {
+                do {
+                    try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
                     if let callback = self.initCallback {
                         // Call the callback on the main queue
                         dispatch_sync(dispatch_get_main_queue()) {
                             callback()
                         }
                     }
-                }
-                else {
-                    println("Error standing up store: \(error)")
+                } catch {
+                    print("Error standing up store: \(error)")
 #if DEBUG
-                    // Blow away store
-                    if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
-                        println("Error removing store: \(error)")
-                    }
+                        // Blow away store
+                        do {
+                            try! NSFileManager.defaultManager().removeItemAtPath(storeURL.path!)
+                        }
 
                     // Try again
-                    if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
-                    let callback = self.initCallback {
+                    try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+
+                    if let callback = self.initCallback {
                         // Call the callback on the main queue
                         dispatch_sync(dispatch_get_main_queue()) {
                             callback()
@@ -123,7 +124,7 @@ public class SingleContextDataController: DataController {
             }
         }
         else {
-            println("Unable to locate \(dataModel) in bundle")
+            print("Unable to locate \(dataModel) in bundle")
         }
     }
 

@@ -66,9 +66,10 @@ class ViewController: UIViewController, DataConsumer {
             sectionNameKeyPath: nil,
             cacheName: nil)
 
-        var error: NSError?
-        if !controller.performFetch(&error) {
-            println("Error fetching \(error)")
+        do {
+            try controller.performFetch()
+        } catch {
+            print("Error fetching \(error)")
         }
         controller.delegate = self.fetchedResultsControllerDelegate
 
@@ -79,7 +80,7 @@ class ViewController: UIViewController, DataConsumer {
         let delegate = FetchedResultsControllerDelegate()
         delegate.onUpdate = {
             [weak self] (object: AnyObject) in
-            println("onUpdate")
+            print("onUpdate")
             if let counter = object as? Counter {
                 self?.counterLabel?.text = "\(counter.count)"
             }
@@ -90,7 +91,7 @@ class ViewController: UIViewController, DataConsumer {
     // MARK: - Notification Handler
 
     @objc func contextChanged(notification: NSNotification) {
-        println("contextChanged:")
+        print("contextChanged:")
     }
 
     // MARK: - IBActions

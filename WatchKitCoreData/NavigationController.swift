@@ -13,11 +13,9 @@ class NavigationController: UINavigationController, DataConsumer {
 
     var dataController: DataController? {
         didSet {
-            if let vcs = viewControllers as? [UIViewController] {
-                for vc in vcs {
-                    if let dc = vc as? DataConsumer {
-                        dc.dataController = dataController
-                    }
+            for vc in viewControllers {
+                if let dc = vc as? DataConsumer {
+                    dc.dataController = dataController
                 }
             }
         }

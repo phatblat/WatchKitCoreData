@@ -46,7 +46,7 @@ class InterfaceController: WKInterfaceController, DataConsumer {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
-        println(NSHomeDirectory())
+        print(NSHomeDirectory())
 
         counterLabel?.setText("-1")
         dataController = AppGroupDataController() {
@@ -84,9 +84,10 @@ class InterfaceController: WKInterfaceController, DataConsumer {
             sectionNameKeyPath: nil,
             cacheName: nil)
 
-        var error: NSError?
-        if !controller.performFetch(&error) {
-            println("Error fetching \(error)")
+        do {
+            try controller.performFetch()
+        } catch {
+            print("Error fetching \(error)")
         }
         controller.delegate = self.fetchedResultsControllerDelegate
 
@@ -97,7 +98,7 @@ class InterfaceController: WKInterfaceController, DataConsumer {
         let delegate = FetchedResultsControllerDelegate()
         delegate.onUpdate = {
             [weak self] (object: AnyObject) in
-            println("onUpdate")
+            print("onUpdate")
             if let counter = object as? Counter {
                 self?.counterLabel?.setText("\(counter.count)")
             }
@@ -108,7 +109,7 @@ class InterfaceController: WKInterfaceController, DataConsumer {
     // MARK: - Notification Handler
 
     @objc func contextChanged(notification: NSNotification) {
-        println("contextChanged:")
+        print("contextChanged:")
     }
 
     // MARK: - IBActions

@@ -23,10 +23,10 @@ public class DualContextDataController: DataController {
     /// Initializes a new instance, spinning off the store setup to a background
     /// queue.
     ///
-    /// :param: callback An InitCallBack to be called once the Core Data stack
+    /// - parameter callback: An InitCallBack to be called once the Core Data stack
     ///                  is done being stood up. Called on the main queue.
     ///
-    /// :returns: an initialized DataController
+    /// - returns: an initialized DataController
     public required init(callback: InitCallback?) {
         initCallback = callback
 
@@ -51,16 +51,18 @@ public class DualContextDataController: DataController {
         mainContext.performBlockAndWait() {
             [unowned self] () -> Void in
 
-            var error: NSError? = nil
-            if !self.mainContext.save(&error) {
-                println("Error saving mainContext: \(error)")
+            do {
+                try self.mainContext.save()
+            } catch {
+                print("Error saving mainContext: \(error)")
                 return
             }
 
             self.privateContext.performBlock { () -> Void in
-                var privateError: NSError? = nil
-                if !self.privateContext.save(&privateError) {
-                    println("Error saving privateContext: \(privateError)")
+                do {
+                    try self.privateContext.save()
+                } catch {
+                    print("Error saving privateContext: \(error)")
                 }
             }
         }
@@ -68,7 +70,7 @@ public class DualContextDataController: DataController {
 
     public func dataStoreDirectory() -> NSURL {
         // App documents directory
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
     }
 
     // MARK: - Private
@@ -77,7 +79,7 @@ public class DualContextDataController: DataController {
     private func initializeCoreData() {
         if let modelURL = NSBundle(forClass: self.dynamicType).URLForResource(dataModel.stringByDeletingPathExtension, withExtension: dataModel.pathExtension),
                 let mom = NSManagedObjectModel(contentsOfURL: modelURL) {
-            println("modelURL: \(modelURL)")
+            print("modelURL: \(modelURL)")
 
             let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
 
@@ -95,30 +97,31 @@ public class DualContextDataController: DataController {
                     NSSQLitePragmasOption: ["journal_mode": "DELETE"]
                 ]
 
-                if let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as? NSURL {
+                if let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last {
                     let storeURL = documentsURL.URLByAppendingPathComponent(self.dataStore)
-                    println("storeURL: \(storeURL)")
+                    print("storeURL: \(storeURL)")
 
-                    var error: NSError? = nil
-                    if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error) {
+                    do {
+                        try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
                         if let callback = self.initCallback {
                             // Call the callback on the main queue
                             dispatch_sync(dispatch_get_main_queue()) {
                                 callback()
                             }
                         }
-                    }
-                    else {
-                        println("Error standing up store: \(error)")
+                    } catch {
+                        print("Error standing up store: \(error)")
 #if DEBUG
                         // Blow away store
-                        if !NSFileManager.defaultManager().removeItemAtPath(storeURL.path!, error: &error) {
-                            println("Error removing store: \(error)")
+                        do {
+                            try NSFileManager.defaultManager().removeItemAtPath(storeURL.path!)
+                        } catch {
+                            fatalError()
                         }
 
                         // Try again
-                        if let store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: &error),
-                        let callback = self.initCallback {
+                        try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+                        if let callback = self.initCallback {
                             // Call the callback on the main queue
                             dispatch_sync(dispatch_get_main_queue()) {
                                 callback()
@@ -130,7 +133,7 @@ public class DualContextDataController: DataController {
             }
         }
         else {
-            println("Unable to locate \(dataModel) in bundle")
+            print("Unable to locate \(dataModel) in bundle")
         }
 
     }

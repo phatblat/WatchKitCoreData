@@ -12,7 +12,7 @@ public typealias SectionChangeHandler = (atIndex: Int) -> Void
 public typealias ChangeHandler = (object: AnyObject) -> Void
 
 @objc
-public class FetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate {
+public class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
 
     public var onSectionInsert: SectionChangeHandler?
     public var onSectionDelete: SectionChangeHandler?
@@ -24,16 +24,14 @@ public class FetchedResultsControllerDelegate: NSFetchedResultsControllerDelegat
 
     public var ignoreNextUpdates: Bool = false
 
-    public init() { }
-
     // MARK: - NSFetchedResultsControllerDelegate
 
     public func controllerWillChangeContent(controller: NSFetchedResultsController)  {
-        println("controllerWillChangeContent:")
+        print("controllerWillChangeContent:")
     }
 
     public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType)  {
-        println("controller:didChangeSection:atIndex:forChangeType:")
+        print("controller:didChangeSection:atIndex:forChangeType:")
 
         switch type {
         case .Insert:
@@ -45,8 +43,8 @@ public class FetchedResultsControllerDelegate: NSFetchedResultsControllerDelegat
         }
     }
 
-    public func controller(controller: NSFetchedResultsController, didChangeObject changedObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        println("controller:didChangeObject:atIndexPath:forChangeType:")
+    public func controller(controller: NSFetchedResultsController, didChangeObject changedObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        print("controller:didChangeObject:atIndexPath:forChangeType:")
 
         switch type {
         case .Insert:
@@ -57,13 +55,11 @@ public class FetchedResultsControllerDelegate: NSFetchedResultsControllerDelegat
             onUpdate?(object: changedObject)
         case .Move:
             onMove?(object: changedObject)
-        default:
-            return
         }
     }
 
     public func controllerDidChangeContent(controller: NSFetchedResultsController)  {
-        println("controllerDidChangeContent:")
+        print("controllerDidChangeContent:")
     }
 
 }
